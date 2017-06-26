@@ -18,36 +18,24 @@ class LoginBox extends Component {
     }
   }
 
-  componentDidMount() {
-    console.log(this.props);
+  componentDidUpdate(prevProps, prevState) {
+    let { redirectTo } = this.props.data;
+      
+    if (redirectTo === true) {
+      this.props.history.push('/');
+    }
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log('will update props', nextProps);
-  }
-
-  componentWillUpdate(nextProps, nextState) {
-    console.log('new props ', nextProps, ', nextState ', nextState);
-  }
-
-  componentWillMount(state) {
-  }
-
-  componentWillUnmount(state) {
-    console.log('unmounting ', this);
+  componentWillUnmount() {
+    let { redirectTo } = this.props.data;
+    
+    redirectTo = false;
   }
 
   render() {
     let { isLoading, error, redirectTo } = this.props.data;
-    let { title, removeRedirection } = this.props;
+    let { title } = this.props;
 
-    if (redirectTo) {
-      removeRedirection();
-      this.props.history.push('/');
-      // return (
-      //   <Redirect push to="/" />
-      // )
-    }
     return (
       <div className="login-box-wrapper">
         <form id="login-box">

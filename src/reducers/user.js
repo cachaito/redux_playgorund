@@ -1,7 +1,8 @@
 const initialState = {
     user: null,
     isLoading: false,
-    error: null
+    error: null,
+    redirectTo: false
 };
 
 function userReducer(state = initialState, action) {
