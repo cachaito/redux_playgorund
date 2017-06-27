@@ -1,8 +1,7 @@
 const initialState = {
     user: null,
     isLoading: false,
-    error: null,
-    redirectTo: false
+    error: null
 };
 
 function userReducer(state = initialState, action) {
@@ -16,9 +15,7 @@ function userReducer(state = initialState, action) {
       user = action.payload.data;
       return { ...state, isLoading: false, user };
     case 'FETCH_USER_REJECTED':
-      return { ...state, isLoading: false, error: `${action.payload.message}`, redirectTo: true };
-    case 'REMOVE_REDIRECTION':
-      return { ...state, isLoading: false, redirectTo: false };
+      return { ...state, isLoading: false, error: `${action.payload.message}` };
     default:
       return state;
   }

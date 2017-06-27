@@ -18,19 +18,9 @@ class LoginBox extends Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    let { redirectTo } = this.props.data;
-      
-    if (redirectTo === true) {
-      this.props.history.push('/');
-    }
-  }
+  componentDidUpdate(prevProps, prevState) {}
 
-  componentWillUnmount() {
-    let { redirectTo } = this.props.data;
-    
-    redirectTo = false;
-  }
+  componentWillUnmount() {}
 
   render() {
     let { isLoading, error, redirectTo } = this.props.data;
